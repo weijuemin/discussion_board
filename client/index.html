@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Discussion Board</title>
+    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="icon" href="assets/icon/favicon.ico">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+  <script src="angular/angular.js"></script>
+  <script src="angular-route/angular-route.js"></script>
+  <script src="angular-cookies/angular-cookies.js"></script>
+
+  <script src="assets/js/config/config.js"></script>
+
+  <script src="assets/js/services/userService.js"></script>
+  <script src="assets/js/services/topicService.js"></script>
+  <script src="assets/js/services/postService.js"></script>
+  <script src="assets/js/services/commentService.js"></script>
+
+  <script src="assets/js/controllers/sessionController.js"></script>
+  <script src="assets/js/controllers/mainController.js"></script>
+  
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body ng-app="app">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Brand</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="#/dashboard">Dashboard</a></li>
+        </ul>
+
+
+        <ul class="nav navbar-nav navbar-right" ng-controller="mainController">
+          <li class="dropdown" ng-if="curUser">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{curUser.username}} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">My profile</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="logout"><a ng-click="logout()">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <div ng-view></div>
+</body>
+</html>

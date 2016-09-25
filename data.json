@@ -1,0 +1,33 @@
+// login
+{
+  "email":"weijm@uw.edu",
+  "password":"WJM112358fbnqsl;"
+}
+
+// register
+{
+  "username":"weijuemin",
+  "email":"weijm@uw.edu",
+  "password":"WJM112358fbnqsl;"
+}
+
+// create a topic
+{
+  "title":"My topic number ?",
+  "description":"For testing the database",
+  "_user":"57e2097b7740251ccce0a73a"
+}
+
+// create a post
+{
+  "content":"This is an answer to one of the topics",
+  "_user":"57e2097b7740251ccce0a73a",
+  "_topic":""
+}
+
+// create a comment
+{
+  "content":"Yes I agree with that",
+  "_user":"57e2097b7740251ccce0a73a",
+  "_post":""
+}

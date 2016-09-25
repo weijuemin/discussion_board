@@ -1,0 +1,51 @@
+<div class="mainbg"></div>
+<div class="row">
+  <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 formBox">
+    <form name="regForm" ng-submit="regForm.$valid && register()">
+      <div class="form-group">
+        <label for="rusername">Username</label>
+        <input type="text" name="rusername" class="form-control" id="rusername" placeholder="Username" ng-model="rUser.username" required>
+
+        <div class="showErr" ng-show="regForm.rusername.$dirty">
+          <p ng-show="regForm.rusername.$error.required">Please enter username</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="remail">Email address</label>
+        <input type="email" name="remail" class="form-control" id="remail" placeholder="Email" ng-model="rUser.email" required>
+
+        <div class="showErr" ng-show="regForm.remail.$dirty">
+          <p ng-show="regForm.remail.$error.required">Please enter email</p>
+          <p ng-show="regForm.remail.$error.email">Email is invalid</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="rpw">Password</label>
+        <input type="password" name="rpw" class="form-control" id="rpw" placeholder="Password" ng-model="rUser.password" required equals="{{rUser.password_confirmation}}">
+
+        <div class="showErr" ng-show="regForm.rpw.$dirty">
+          <p ng-show="regForm.rpw.$error.required">Please enter password</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="rpw_conf">Password confirmation</label>
+        <input type="password" name="rpw_conf" class="form-control" id="rpw_conf" placeholder="Password confirmation" ng-model="rUser.password_confirmation" required equals="{{rUser.password}}">
+
+        <div class="showErr" ng-show="regForm.rpw.$dirty">
+          <p ng-show="regForm.rpw_conf.$error.required">Please enter password confirmation</p>
+          <p ng-show="regForm.rpw_conf.$error.equals">Password doesn't match</p>
+        </div>
+      </div>
+      
+      <div ng-if="regErrors" class="showErr">
+        <p>{{regErrors}}</p>
+      </div>
+
+      <button class="btn btn-primary" ng-disabled="regForm.$invalid">Register</button>
+    </form>
+    <a href="#/login" class="btn btn-link">Aleady a member? Login</a>
+  </div>
+</div>

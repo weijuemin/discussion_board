@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
+    <h3><button class="btn btn-success">{{topic.category}}</button> {{topic.title}}</h3>
+    <p class="creator">{{topic._user.username}} @ {{topic.createdAt | date: 'h:mm a, MM/d/yyyy'}}</p>
+
+    <div class="topicDescription">{{topic.description}}</div>
+  </div>
+</div>
+
+<div class="postAnswer row">
+  <div class="col-lg-6 col-md-offset-3 col-md-6 col-md-offset-3">
+    <form name="newPostForm" ng-submit="newPostForm.$valid && createPost(topic._id)">
+      <div class="form-group">
+        <textarea type="text" name="postContent" ng-model="newPost.content" class="form-control" placeholder="Post your answer here..." required></textarea>
+      </div>
+      <button class="btn btn-primary">Submit</button>
+    </form>
+  </div><br>
+
+  <div class="showPosts col-lg-6 col-md-offset-3 col-md-6 col-md-offset-3">
+    <div class="onePost" ng-repeat="post in topic._answers">
+    <hr>
+      <p>{{post.content}}</p>
+      <p class="creator">{{post._user.username}} @ {{post.createdAt | date:'h:mm a, MM/d/yyyy'}} 
+      <button class="btn btn-link btn-sm deletePost" ng-show="post._user._id === curUser._id" ng-click="deletePost(post)">Delete</button></p>
+      <div class="votes">
+        <button class="btn btn-success btn-xs" ng-click="upvote(post)"><span class="glyphicon glyphicon-triangle-top"></span> {{post._upvoters.length}}</button>
+        <button class="btn btn-danger btn-xs" ng-click="downvote(post)"><span class="glyphicon glyphicon-triangle-bottom"></span> {{post._downvoters.length}}</button>
+        <div class="showErr">
+          <p>{{votedError}} </p>
+        </div>
+      </div><br>
+      <div class="comments">
+        <div class="createComment">
+          <form name="newCommentForm" ng-submit="newCommentForm.$valid && createComment(post, topic._id)">
+            <div class="form-group">
+              <textarea type="text" name="postContent" ng-model="post.newComment" class="form-control" placeholder="Comment" required></textarea>
+            </div>
+            <button class="btn btn-default">Comment</button>
+          </form>
+        </div><br>
+        <div class="oneComment" ng-repeat="comment in post._comments">
+        <hr>
+          <p>{{comment.content}} <button class="btn btn-link btn-sm deleteComment" ng-show="comment._user._id === curUser._id" ng-click="deleteComment(comment)">Delete</button></p>
+          <p class="creator">{{comment._user.username}} @ {{comment.createdAt | date:'h:mm a, MM/d/yyyy'}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="showTopics">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+      <div class="showErr">
+        <p>{{topicError}}</p>
+        <p>{{topicRouteError}}</p>
+        <p>{{showTopicError}}</p>
+        <div class="showErr" ng-repeat="error in errors">
+          <p>{{error}}</p>
+        </div>
+      </div>
+        <h3>Welcome, {{curUser.username}}!</h3><br>
+        <input type="text" class="searchBar" ng-model="searchTopic" placeholder="Search Topic or User">
+        <table class="table table-striped">
+          <tr>
+            <th>Category</th>
+            <th>Topic</th>
+            <th>User Name</th>
+            <th>Answers <span class="glyphicon" ng-class="{'glyphicon-chevron-down':ansIsActive,
+            'glyphicon-chevron-up':!ansIsActive}" ng-click="toggleSortAndCaret()"></span></th>
+          </tr>
+          <tr ng-repeat="topic in topics | filter:searchTopic | orderBy:_answers.length ">
+            <td>{{topic.category}}</td>
+            <td><a ng-href="#/topic/{{topic._id}}" class="btn btn-link">{{topic.title}}</a></td>
+            <td><a ng-href="#/user/{{topic._user._id}}">{{topic._user.username}}</a></td>
+            <td>{{topic._answers.length}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="addTopic">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
+        <h3>Add a new topic:</h3><hr>
+        <form name="newTopicForm">
+          <div class="form-group">
+            <label for="topicTitle">Title</label>
+            <input type="text" name="title" ng-model="newTopic.title" class="form-control" id="topicTitle" placeholder="Topic title" required maxlength="156">
+          </div>
+          <div class="form-group">
+            <label for="topicDescription">Description</label>
+            <textarea type="text" name="description" ng-model="newTopic.description" class="form-control" id="topicDescription" placeholder="More details about this topic"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="topicCategory">Category</label>
+            <select name="category" id="topicCategory" class="form-control" ng-model="newTopic.category" placeholder="Select a category">
+              <option value="ruby">Ruby (on rails)</option>
+              <option value="python">Python</option>
+              <option value="javascript">Javascript</option>
+              <option value="java">Java</option>
+              <option value="c++">C++</option>
+              <option value="c#">C#</option>
+              <option value="sql">SQL</option>
+              <option value="nodejs">Node.js</option>
+              <option value="html">HTML</option>
+              <option value="css">CSS</option>
+              <option value="general">General</option>
+            </select>
+          </div>
+
+          <button class="btn btn-info" ng-click="newTopicForm.$valid && createTopic() && newTopicForm.$setPristine">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

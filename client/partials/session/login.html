@@ -1,0 +1,32 @@
+<div class="mainbg"></div>
+<div class="row">
+  <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 formBox">
+    <form name="loginForm" ng-submit="loginForm.$valid && login()">
+      <div class="form-group">
+        <label for="lemail">Email address</label>
+        <input type="email" name="lemail" class="form-control" id="lemail" placeholder="Email" ng-model="lUser.email" required>
+
+        <div class="showErr" ng-show="loginForm.lemail.$dirty">
+          <p ng-show="loginForm.lemail.$error.required">Please enter email</p>
+          <p ng-show="loginForm.lemail.$error.email">Email is invalid</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="lpw">Password</label>
+        <input type="password" name="lpw" class="form-control" id="lpw" placeholder="Password" ng-model="lUser.password" required>
+
+        <div class="showErr" ng-show="loginForm.lpw.$dirty">
+          <p ng-show="loginForm.lpw.$error.required">Please enter password</p>
+        </div>
+      </div>
+      
+      <div ng-if="loginErrors" class="showErr">
+        <p>{{loginErrors}}</p>
+      </div>
+
+      <button class="btn btn-primary" ng-disabled="loginForm.$invalid">Login</button>
+    </form>
+    <a href="#/register" class="btn btn-link">Not a member? Register</a>
+  </div>
+</div>
