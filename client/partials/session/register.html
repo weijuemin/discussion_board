@@ -41,7 +41,9 @@
       </div>
       
       <div ng-if="regErrors" class="showErr">
-        <p>{{regErrors}}</p>
+        <div ng-repeat="error in regErrors">
+          <p>{{error.message}}</p>
+        </div>
       </div>
 
       <button class="btn btn-primary" ng-disabled="regForm.$invalid">Register</button>

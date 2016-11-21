@@ -11,12 +11,6 @@ app.controller('mainController', ['$scope', 'topicService', 'postService', 'comm
     }
   }
 
-  // toggle class:
-  $scope.ansIsActive = true;
-  $scope.toggleSortAndCaret = function(){
-    $scope.ansIsActive = !$scope.ansIsActive;
-  }
-
   function getTopics(){
     topicService.index(function(err, topics){
       if(err){
@@ -45,7 +39,7 @@ app.controller('mainController', ['$scope', 'topicService', 'postService', 'comm
     })
   };
 
-  
+
 
   $scope.createPost = function(topic_id){
     var postData = $scope.newPost;

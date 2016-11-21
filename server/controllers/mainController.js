@@ -4,7 +4,7 @@ var Comment = require('../models/comments.js'),
     User = require('../models/users.js');
 
 function mainControllerCustr(Comment, Post, Topic, User){
-  
+
   this.createTopic = function(req, res){
     var user_id = req.body._user;
     Topic.create(req.body, function(err, topic){
@@ -49,7 +49,7 @@ function mainControllerCustr(Comment, Post, Topic, User){
             }
           }
         })
-      }  
+      }
     })
   };
   this.createComment = function(req, res){
@@ -76,16 +76,16 @@ function mainControllerCustr(Comment, Post, Topic, User){
             }
           }
         })
-      }  
+      }
     })
   };
-  
+
   // for admins
   this.getAllDataOnTopics = function(req, res){
     Topic.find({}).populate([
       {
         path: '_answers',
-        populate: 
+        populate:
         [{
           path: '_comments',
           populate: {
@@ -175,7 +175,7 @@ function mainControllerCustr(Comment, Post, Topic, User){
             }
             res.json(post);
           })
-        })    
+        })
       }
     })
   };

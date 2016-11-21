@@ -21,7 +21,7 @@
     <div class="onePost" ng-repeat="post in topic._answers">
     <hr>
       <p>{{post.content}}</p>
-      <p class="creator">{{post._user.username}} @ {{post.createdAt | date:'h:mm a, MM/d/yyyy'}} 
+      <p class="creator">{{post._user.username}} @ {{post.createdAt | date:'h:mm a, MM/d/yyyy'}}
       <button class="btn btn-link btn-sm deletePost" ng-show="post._user._id === curUser._id" ng-click="deletePost(post)">Delete</button></p>
       <div class="votes">
         <button class="btn btn-success btn-xs" ng-click="upvote(post)"><span class="glyphicon glyphicon-triangle-top"></span> {{post._upvoters.length}}</button>

@@ -30,7 +30,7 @@ app.service('postService', ['$http', function($http){
     if(typeof callback !== 'function'){
       return "Wrong arg type";
     }
-    if(typeof which === "string" && (which === "upvote" || which === "downvote")){
+    if(which === "upvote" || which === "downvote"){
       $http.patch(`/posts/${which}`, data).then(function(res){
         if(res.data.errors){
           callback(res.data.errors, null);

@@ -21,8 +21,8 @@ var bcrypt = require('bcryptjs'),
       password: {
         type: String,
         required: [true, 'Please enter password'],
-        min: 8,
-        max: 32,
+        minlength: [8, 'Password should be more than 8 characters'],
+        maxlength: [32, 'Password should be less than 32 characters'],
         validate: {
           validator: function(pw) {
             return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?;&])[A-Za-z\d$@$!%*?;&]{8,32}/.test(pw);
